@@ -60,14 +60,14 @@ Notepad-China
 	category: 随笔
 	tags: [随笔]
 	imagefeature:
-	mathjax: false
-	chart:false
+	mathjax:  false
+	chart:    true
 	comments: true
 	featured: true
 	---
 </pre>
 
-Layout是确定使用什么页面模板，Title是标题，Description是描述，Modified是修改日期，Category是分类，Tag是标签，imagefeature是进入博文时候的图片，默认无，mathjax是一个js库，用来写公式，不需要建议定义为false，chart是图表，是amcharts，没需要建议false，comment是评论，featured是确定是否为佳文。
+Layout是确定使用什么页面模板，Title是标题，Description是描述，Modified是修改日期，Category是分类，Tag是标签，imagefeature是进入博文时候的图片，默认无，mathjax是一个js库，用来写公式，不需要建议定义为false，chart是图表，是amcharts，comment是评论，featured是确定是否为佳文。
 
 有了这段配置文件，接下来就可以写文章内容了，Markdown支持的语法都可使用，也可使用HTML。
 
