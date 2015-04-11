@@ -6,8 +6,8 @@ modified: 2014-08-28
 category: 随笔
 tags: [jekyll, first article]
 imagefeature: 
-mathjax: 
-chart: 
+mathjax: false
+chart:false
 comments: true
 featured: false
 ---
@@ -16,6 +16,7 @@ featured: false
 
 首先需要有一段配置描述，本文的配置描述是这样的：
 
+<pre>
 	---
 	layout: post
 	title: "Example"
@@ -29,6 +30,7 @@ featured: false
 	comments: true
 	featured: false
 	---
+</pre>
 
 Layout是确定使用什么页面模板，Title是标题，Description是描述，Modified是修改日期，Category是分类，Tag是标签，imagefeature是进入博文时候的图片，默认无，mathjax是一个js库，用来写公式，不需要建议定义为false，chart是图表，是amcharts，没需要建议false，comment是评论，featured是确定是否为佳文。
 
