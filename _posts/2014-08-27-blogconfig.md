@@ -7,7 +7,7 @@ category: 随笔
 tags: [随笔]
 imagefeature:
 mathjax: false
-chart:false
+chart:
 comments: true
 featured: true
 ---

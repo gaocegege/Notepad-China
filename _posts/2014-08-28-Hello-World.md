@@ -26,7 +26,7 @@ featured: false
 	tags: [jekyll, first article]
 	imagefeature: 
 	mathjax: false
-	chart: false
+	chart: 
 	comments: true
 	featured: false
 	---
