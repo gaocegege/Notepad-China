@@ -1,0 +1,183 @@
+title:            高策
+description:      Talk is ( Not!) cheap.
+logo:             logo.png
+background:       
+# 如果comments_sys为多说且有定义duoshuo_shortname，则使用多说；
+# 如果comments_sys为Disqus且有定义disqus_shortname，则使用disqus；
+comments_sys:     duoshuo
+duoshuo_shortname:notepadchina
+disqus_shortname: <void>
+share:            true
+# 代码高亮
+highlight:        true
+dropcap:          true
+# Change url to your domain. Leave localhost server or blank when working locally.
+# or use the hint from http://jekyllrb.com/docs/github-pages/ to keep this the same 
+# whether working locally or remotely. Start Jekyll with: jekyll serve --baseurl ''
+baseurl:          http://gaocegege.com
+url:              /Notepad-China
+
+# Owner/author information
+owner:
+  name:           高策
+  avatar:         gaocegege.jpg
+  email:          gaocegege@hotmail.com
+  wechat:         270863799
+  # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
+  description:    Done is better than perfect.
+  # Social networking links used in footer. Update and remove as you like.
+  renren:         325460067
+  weibo:          constructcece
+  twitter:        
+  facebook:       gaocegege
+  github:         gaocegege      
+  instagram:      
+  # For Google Authorship https://plus.google.com/authorship
+  google_plus:    https://plus.google.com/u/0/109707369864071328013
+
+# Analytics 
+# 百度统计暂不能用
+baidu_analytics:  false
+
+# Analytics and webmaster tools stuff goes here
+# 谷歌统计跟踪代码
+google_analytics:   UA-54253120-2
+google_verify:      
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:         
+
+# Links to include in footer navigation
+# For external links add external: true
+# 导航栏内容
+links:
+  - title: 主页
+    url: /
+    external: false
+    icon: home
+  - title: 编程
+    url: /featured
+  - title: 消遣
+    url: /relaxed
+  - title: 分类
+    url: /categories
+  - title: 关于我
+    url: /about
+  - title: 统计
+    url: /analytics
+  - title: Link
+    url: /link
+  - title: RSS
+    url: /rss.xml
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    Asia/Shanghai
+future:      true
+highlighter: pygments
+markdown:    kramdown
+paginate:    10
+paginate_path: "page:num"
+
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+# 构造博客链接的方式
+permalink:   /:categories/:title
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+  coderay:
+    coderay_line_numbers: 
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: class
+
+prose:
+  rooturl: '_posts'
+  siteurl: 'http://gaocegege.com/Blog'
+  relativeLinks: 'http://gaocegege.com/Blog/links.jsonp'
+  media: 'images'
+  metadata:
+    _posts:
+      - name: "published"
+        field:
+          label: "Published"
+          element: "checkbox"
+          value: "true"
+      - name: "layout"
+        field:
+          element: "hidden"
+          label: "Layout"
+          value: "post"
+      - name: "title"
+        field:
+          label: "Title"
+          element: "text"
+          value: "An Awesome Headline!"
+      - name: "description"
+        field:
+          element: "text"
+          label: "Description"
+          placeholder: "Enter Post Description"
+      - name: "headline"
+        field:
+          element: "text"
+          label: "beadline"
+          placeholder: "Enter Post Headline"
+      - name: "modified"
+        field:
+          element: "text"
+          label: "Has this page been modified?"
+          placeholder: "YYYY-MM-DD"
+      - name: "categories"
+        field:
+          element: "multiselect"
+          label: "Add categories"
+          placeholder: "Choose categories"
+          value: personal
+          options:
+            - name: "Personal"
+              value: personal
+            - name: "Engineering"
+              value: engineering
+            - name: "Physics"
+              value: physics
+            - name: "Psychology"
+              value: psychology
+            - name: "Interesting"
+              value: interesting
+            - name: "Web-Development"
+              value: webdevelopment
+          alterable: true
+      - name: "tags"
+        field:
+          element: "text"
+          label: "Tags"
+          placeholder: "Enter tags, separated by spaces"
+      - name: "imagefeature"
+        field:
+          element: "text"
+          label: "Featured Image"
+          placeholder: "somefile.jpg"
+      - name: "mathjax"
+        field:
+          element: "checkbox"
+          label: "MathJax"
+          value: false
+      - name: "featured"
+        field:
+          element: "checkbox"
+          label: "Featured?"
+          value: false
+      - name: "comments"
+        field:
+          element: "checkbox"
+          label: "Comments"
+          value: false
+
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]

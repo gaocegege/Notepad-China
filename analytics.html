@@ -1,0 +1,217 @@
+---
+layout: page
+title: 数据统计
+permalink: /analytics/index.html
+description: "数据统计页面"
+chart: true
+---
+
+<div>
+  <div class="chart" id="category" style="width: 100%; height: 500px; margin-bottom: 20px;" ></div>
+  <figcaption>博文类别统计</figcaption>
+</div>
+
+<div>
+  <div class="chart" id="tag" style="width: 100%; height: 500px; margin-bottom: 20px;" ></div>
+  <figcaption>博文标签统计</figcaption>
+</div>
+
+<div>
+  <div class="chart" id="date" style="width: 100%; height: 500px; margin-bottom: 20px;" ></div>
+  <figcaption>博文发布日期统计</figcaption>
+</div>
+
+<!-- amCharts javascript code -->
+<script type="text/javascript">
+  AmCharts.makeChart("category",
+    {
+      "type": "pie",
+      "pathToImages": "http://cdn.amcharts.com/lib/3/images/",
+      "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+      "theme": "none",
+      "labelsEnabled": false,
+      "legend": {
+        "markerType": "circle",
+        "position": "right",
+        "marginRight": 80,    
+        "autoMargins": false
+      },
+      "innerRadius": "40%",
+      "labelRadius": 10,
+      "labelRadiusField": "Not set",
+      "startRadius": "10%",
+      "colorField": "Not set",
+      "descriptionField": "Not set",
+      "hoverAlpha": 0.75,
+      "outlineThickness": 0,
+      "startEffect": "elastic",
+      "titleField": "category",
+      "valueField": "number-of-posts",
+      "allLabels": [],
+      "balloon": {},
+      // "legend": {
+      //   "align": "center",
+      //   "markerType": "square"
+      // },
+      "titles": [],
+      "dataProvider": [
+{% assign tags_list = site.categories %}  
+  {% if tags_list.first[0] == null %}
+    {% for tag in tags_list %} 
+        {
+          "category": "{{ tag | capitalize }}",
+          "number-of-posts": {{ site.tags[tag].size }}
+        },
+    {% endfor %}
+  {% else %}
+    {% for tag in tags_list %} 
+        {
+          "category": "{{ tag[0] | capitalize }}",
+          "number-of-posts": {{ tag[1].size }}
+        },
+    {% endfor %}
+  {% endif %}
+{% assign tags_list = nil %}
+      ]
+    }
+  );
+
+  AmCharts.makeChart("tag",
+    {
+      "type": "serial",
+      "pathToImages": "http://cdn.amcharts.com/lib/3/images/",
+      "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+      "theme": "none",
+      "dataProvider": [
+{% assign tags_list = site.tags %}  
+  {% if tags_list.first[0] == null %}
+    {% for tag in tags_list %} 
+        {
+          "category": "{{ tag | capitalize }}",
+          "number-of-posts": {{ site.tags[tag].size }},
+          "color": "#0E8ED0"
+        },
+    {% endfor %}
+  {% else %}
+    {% for tag in tags_list %} 
+        {
+          "category": "{{ tag[0] | capitalize }}",
+          "number-of-posts": {{ tag[1].size }},
+          "color": "#0E8ED0"
+        },
+    {% endfor %}
+  {% endif %}
+{% assign tags_list = nil %}
+      ],
+    "valueAxes": [{
+        "axisAlpha": 0,
+        "position": "left",
+        "title": "Number of posts"
+    }],
+    "startDuration": 1,
+    "graphs": [{
+        "balloonText": "<b>[[category]]: [[value]]</b>",
+        "colorField": "color",
+        "fillAlphas": 0.9,
+        "lineAlpha": 0.2,
+        "type": "column",
+        "valueField": "number-of-posts"
+    }],
+    "chartCursor": {
+        "categoryBalloonEnabled": false,
+        "cursorAlpha": 0,
+        "zoomable": false
+    },
+    // "rotate": true,
+    "chartScrollbar": {},
+    "chartCursor": {
+        "cursorPosition": "mouse"
+    },
+    "categoryField": "category",
+    "categoryAxis": {
+        "gridPosition": "start",
+        "labelRotation": 45
+    },
+    "amExport":{}
+    }
+  );
+
+// var chart = AmCharts.makeChart("date",{
+//   "type": "serial",
+//   "theme": "patterns",
+//   "categoryField": "category",
+//   "graphs": [
+//     {
+//       "valueField": "value"
+//     }
+//   ],
+//   "dataProvider": [
+//     {
+//       "category": "category 1",
+//       "value": 8,
+//     },
+//     {
+//       "category": "category 2",
+//       "value": 4,
+//     }
+//   ]
+// });
+  var chart = AmCharts.makeChart("date", {
+    "type": "serial",
+    "theme": "none",
+     "pathToImages": "http://www.amcharts.com/lib/3/images/",
+     "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b></span>",
+    // "valueAxes": [{
+    //     "logarithmic": true,
+    //     "dashLength": 1,
+    //     "guides": [{
+    //         "dashLength": 6,
+    //         "inside": true,
+    //         "label": "average",
+    //         "lineAlpha": 1,
+    //         "value": 90.4
+    //     }],
+    //     "position": "left"
+    // }],
+    "graphs": [{
+        "bullet": "round",
+        "id": "g1",
+        "bulletBorderAlpha": 1,
+        "bulletColor": "#FFFFFF",
+        "bulletSize": 7,
+        "lineThickness": 2,
+        "title": "count",
+        "type": "smoothedLine",
+        "useLineColorForBulletBorder": true,
+        "valueField": "count"
+    }],
+    "chartScrollbar": {},
+    "chartCursor": {
+        "cursorPosition": "mouse"
+    },
+    "dataDateFormat": "YYYY-MM-DD",
+    "categoryField": "date",
+    "categoryAxis": {
+        "parseDates": true
+    },
+    "dataProvider": [
+    //get the post list
+    {% assign post_list = site.posts %}
+    {% assign last_time = post_list | last %}
+    {% assign last_time = last_time.date %}
+    {% assign count = 0 %}
+    {% for post in post_list reversed %}{% if post.date == last_time %}{% assign count = count | plus: 1 %}{% else %}
+    {
+      "date": "{{ last_time | date: "%Y-%m-%d" }}",
+      "count": "{{ count }}",
+      "color": "#0E8ED0"
+    },{% assign last_time = post.date %}{% assign count = 1 %}{% endif %}{% endfor %}
+    {
+      "date": "{{ last_time | date: "%Y-%m-%d" }}",
+      "count": "{{ count }}",
+      "color": "#0E8ED0"
+    },{% assign last_time = nil %}{% assign count = nil %}
+    ]
+});
+
+</script>
